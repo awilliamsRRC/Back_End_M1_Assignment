@@ -48,4 +48,19 @@ Allows user import and rename object.
 
 This defines get routes on the server. It contains **callback: RequestHandler**. It defines the type for a function that handles  HTTp request and sends responses like .get, .post ,.put. **.get** is used to request data from a server.
 
+# server.ts
+
+**imports** 
+app object from app.ts and server object from http.
+
+**const PORT: string | number = process.env.PORT || 3000;**
+
+Intitializes port as string or number and sets environment variable on PORT,if undefined then it will be 3000.
+
+**const server: Server = app.listen(PORT, () => {**
+
+It creates server object and list on PORT.
+
+
+
 
