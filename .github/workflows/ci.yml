@@ -1,0 +1,45 @@
+# Name of the workflow
+name: Node.js CI
+
+# Defines the events that trigger the workflow
+on:
+  # Trigger the workflow when code is pushed to the 'main' branch
+  push:
+    branches:
+      - main  # Targeting the main branch
+
+  # Trigger the workflow when a pull request is made to the 'main' branch
+  pull_request:
+    branches:
+      - main  # Targeting the main branch
+
+# Define jobs that should run as part of the workflow
+jobs:
+  # Define the job named 'build' that will run on Ubuntu
+  build:
+    # Specifies the environment the job will run on (Ubuntu latest)
+    runs-on: ubuntu-latest  
+
+    # Steps that will be run in this job
+    steps:
+      # Step 1: Checkout the repository's code
+      - name: Checkout repository
+        # Use the checkout action to get the latest code from the repository
+        uses: actions/checkout@v2  
+
+      # Step 2: Set up Node.js
+      - name: Use Node.js
+        # Use the setup-node action to set up a specific Node.js version
+        uses: actions/setup-node@v2  
+        with:
+          node-version: '14'  # Specify the version of Node.js (14 in this case)
+
+      # Step 3: Install dependencies for the project
+      - name: Install dependencies
+        # Run the 'npm install' command to install project dependencies
+        run: npm install  
+
+      # Step 4: Run the tests
+      - name: Run tests
+        # Run the 'npm test' command to execute tests using Jest
+        run: npm test  

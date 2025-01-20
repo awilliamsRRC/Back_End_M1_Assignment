@@ -1,8 +1,14 @@
 import express, { Express } from "express";
 import setupSwagger from "../config/swagger";
+import healthRoutes from "./api/v1/routes/health";
 
 // Initialize Express application
 const app: Express = express();
+
+// Use the health routes
+app.use("/api/v1", healthRoutes);
+
+
 
 // Set up Swagger documentation
 setupSwagger(app);
