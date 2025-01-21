@@ -10,7 +10,7 @@ setupSwagger(app);
  * @openapi
  * /:
  *   get:
- *     description: returns a "Hello,World!" message
+ *     description: returns a "Hello, World!" message
  *     responses:
  *       200:
  *         description: Success
