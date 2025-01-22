@@ -1,4 +1,4 @@
-import { calculatePortfolioPerformance } from "../src/portfolio/portfolioPerformance";
+import { calculateAssetAllocation, calculatePortfolioPerformance, findLargestHolding } from "../src/portfolio/portfolioPerformance";
 
 describe('calculatePortfolioPerformance', () => {
     // Test case 1: Profit scenario(positive percentage change)
@@ -31,4 +31,52 @@ describe('calculatePortfolioPerformance', () => {
         //Check performance summary
         expect(result.performanceSummary).toBe('The portfolio has performed poorly.');
     });
+});
+
+describe('findLargestHolding', () => {
+    test('should return the asset wuth the highest value',() => {
+        const assets = [
+            { name: 'Stocks', value: 5000 },
+            { name: 'Bonds', value: 3000 },
+            { name: 'Real Estate', value: 2000 },
+        ];
+        const result = findLargestHolding(assets);
+        expect(result).toEqual({name: 'Stocks', value: 5000});
+    });
+});
+
+describe('calculateAssetAllocation', () => {
+
+   
+
+    test('should correctly calculate the percentage allocation of assets', () => {
+        const assets = [
+            {name: 'Stocks', value :5000},
+            {name : 'Bonds', value:3000},
+            {name: 'Real Estate', value:2000},
+        ];
+        const result = calculateAssetAllocation(assets);
+        expect(result).toEqual([
+            { name: 'Stocks', percentage: 50 },
+            { name: 'Bonds', percentage: 30 },
+            { name: 'Real Estate', percentage: 20 },
+        ]);
+    });
+
+    test('should handle when one asset is much larger than others', () => {
+        const assets = [
+            { name: 'Stocks', value: 10000 },
+            { name: 'Bonds', value: 1000 },
+            { name: 'Real Estate', value: 2000 },
+          ];
+          const result = calculateAssetAllocation(assets);
+          expect(result).toEqual([
+            { name: 'Stocks', percentage: 76.92},
+            { name: 'Bonds', percentage: 7.69 },
+            { name: 'Real Estate', percentage: 15.38 },
+          ]);
+    });
+
+
+
 });
