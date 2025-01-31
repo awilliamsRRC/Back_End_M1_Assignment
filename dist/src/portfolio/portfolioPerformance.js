@@ -57,3 +57,4 @@ function calculateAssetAllocation(assets) {
         percentage: Math.round((asset.value / totalValue) * 100 * 100) / 100,
     }));
 }
+//# sourceMappingURL=portfolioPerformance.js.map

@@ -24,3 +24,4 @@ describe("GET /api/v1/health", () => {
         expect(response.body).toHaveProperty("version");
     }));
 });
+//# sourceMappingURL=healthCheck.test.js.map

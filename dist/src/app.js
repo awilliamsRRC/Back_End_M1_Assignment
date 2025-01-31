@@ -43,3 +43,4 @@ app.get("/api/v1/health", (req, res) => {
     });
 });
 exports.default = app;
+//# sourceMappingURL=app.js.map
